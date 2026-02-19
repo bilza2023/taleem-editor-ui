@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taleem Editor – Static Test</title>
+
+  <!-- Load compiled CSS (adjust path if needed) -->
+  <link rel="stylesheet" href="./editor.css" />
+</head>
+<body>
+
+  <div id="app"></div>
+
+  <!-- Load compiled JS bundle (adjust filename after build) -->
+  <script src="./editor.js"></script>
+
+  <script>
+    // Wait until bundle is loaded
+    if (!window.createTaleemEditor) {
+      console.error("Taleem Editor factory not found.");
+    } else {
+      const editor = window.createTaleemEditor({
+        target: document.getElementById('app'),
+        props: {
+          slides: [],
+          deckName: 'my-deck'
+        }
+      });
+
+      window.editor = editor; // optional debug access
+    }
+  </script>
+
+</body>
+</html>
