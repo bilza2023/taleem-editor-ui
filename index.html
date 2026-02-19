@@ -1,13 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>svelte-land</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taleem Editor – Dev</title>
+</head>
+<body>
+
+  <div id="app"></div>
+
+  <script type="module" src="/src/main.js"></script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (!window.createTaleemEditor) {
+        console.error("Factory not found");
+        return;
+      }
+
+      const editor = window.createTaleemEditor({
+        target: document.getElementById('app'),
+        props: {
+          slides: [],
+          deckName: 'dev-deck'
+        }
+      });
+
+      window.editor = editor;
+    });
+  </script>
+
+</body>
 </html>
